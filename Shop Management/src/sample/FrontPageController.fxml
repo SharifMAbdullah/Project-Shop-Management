@@ -16,7 +16,7 @@
       <Label layoutX="247.0" layoutY="97.0" prefHeight="276.0" prefWidth="118.0" text="            Foods" />
       <Label layoutX="449.0" layoutY="84.0" prefHeight="276.0" prefWidth="106.0" text="Cleaning Products" />
       <Button layoutX="75.0" layoutY="271.0" mnemonicParsing="false" text="Visit" />
-      <Button layoutX="280.0" layoutY="271.0" mnemonicParsing="false" text="Visit" />
+      <Button layoutX="280.0" layoutY="271.0" mnemonicParsing="false" onAction="#Visit" text="Visit" />
       <Button layoutX="476.0" layoutY="271.0" mnemonicParsing="false" text="Visit" />
    </children>
 </AnchorPane>
