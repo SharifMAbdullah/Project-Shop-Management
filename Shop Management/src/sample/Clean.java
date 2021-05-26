@@ -7,16 +7,15 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 
-public class Clean {
+public class Clean extends FrontPageController{
     @FXML
-    private Button btn1;
+    private Button home;
 
     public void NewAction(ActionEvent event) throws IOException {
-        if(event.getSource()==btn1){
+        if(event.getSource()==home){
             Parent FrontPageController3 = FXMLLoader.load(getClass().getResource("/sample/FrontPageController.fxml"));
             Scene FrontPageScene3 = new Scene(FrontPageController3);
             Stage FrontPageStage3 = (Stage) ((Node)event.getSource()).getScene().getWindow();
@@ -24,5 +23,9 @@ public class Clean {
             FrontPageStage3.setScene(FrontPageScene3);
             FrontPageStage3.show();
         }
+    }
+
+    public void btnACtion(ActionEvent e) {
+        super.btnACtion(e);
     }
 }
