@@ -14,7 +14,7 @@ public class Clean extends FrontPageController{
     @FXML
     private Button home;
 
-    @Override
+
     public void initialize(ActionEvent event){
         try {
             if (event.getSource() == home) {
