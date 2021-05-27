@@ -37,7 +37,7 @@
       <Button fx:id="btn22" layoutX="406.0" layoutY="264.0" mnemonicParsing="false" onAction="#btnACtion" prefHeight="25.0" prefWidth="161.0" text="Bread(40)                     +" />
       <Button fx:id="btn23" layoutX="406.0" layoutY="302.0" mnemonicParsing="false" onAction="#btnACtion" prefHeight="25.0" prefWidth="161.0" text="Dan Cake( 30)              +" />
       <Button fx:id="btn24" layoutX="406.0" layoutY="345.0" mnemonicParsing="false" onAction="#btnACtion" prefHeight="25.0" prefWidth="161.0" text="Nuts(200)                     +" />
-      <Button fx:id="home" mnemonicParsing="false" onAction="#NewAction2" prefHeight="35.0" prefWidth="93.0" text="Home" />
+      <Button fx:id="home" mnemonicParsing="false" onAction="#initialize" prefHeight="35.0" prefWidth="93.0" text="Home" />
       <TextField fx:id="txt1" layoutX="147.0" layoutY="74.0" onAction="#btnACtion" prefHeight="25.0" prefWidth="49.0" />
       <TextField fx:id="txt2" layoutX="147.0" layoutY="111.0" onAction="#btnACtion" prefHeight="25.0" prefWidth="49.0" />
       <TextField fx:id="txt3" layoutX="147.0" layoutY="148.0" onAction="#btnACtion" prefHeight="25.0" prefWidth="49.0" />
