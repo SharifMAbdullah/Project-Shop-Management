@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
-public abstract class FrontPageController{
+public class FrontPageController{
     @FXML
     private Button btnGenerate;
     @FXML
@@ -20,7 +20,7 @@ public abstract class FrontPageController{
     private Button btnGenerate2;
 
 
-
+        
     @FXML
     public void handleButtonAction(ActionEvent event) throws IOException {
         if(event.getSource()==btnGenerate){
@@ -55,8 +55,6 @@ public abstract class FrontPageController{
     protected Integer counts1 = 0,counts2 = 0,counts3 = 0,counts4 = 0,counts5 = 0,counts6 = 0,counts7 = 0,counts8 = 0,counts9 = 0, counts10 = 0,counts11 = 0, counts12 = 0,counts13= 0, counts14 = 0, counts15 = 0,counts16 = 0,counts17 = 0,counts18 = 0,counts19 = 0,counts20 = 0,
             counts21 = 0,counts22 = 0,counts23 = 0,counts24 = 0;
 
-    @Override
-    public abstract void initialize (ActionEvent event);
 
     protected void btnACtion(ActionEvent e) {
         if (e.getSource() == btn1)  {
