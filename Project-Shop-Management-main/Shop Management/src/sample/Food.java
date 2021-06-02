@@ -12,6 +12,8 @@ import java.io.IOException;
 public class Food extends FrontPageController {
         @FXML
         private Button home;
+        @FXML
+        private Button Finish;
 
         public void initialize(ActionEvent event){
                 try {
@@ -22,6 +24,15 @@ public class Food extends FrontPageController {
                                 FrontPageStage3.setTitle("Shop Management");
                                 FrontPageStage3.setScene(FrontPageScene3);
                                 FrontPageStage3.show();
+                        }
+                        else if (event.getSource() == Finish) {
+                                Parent FrontPageController3 = FXMLLoader.load(getClass().getResource("Receipt.fxml"));
+                                Scene FrontPageScene3 = new Scene(FrontPageController3);
+                                Stage FrontPageStage3 = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                                FrontPageStage3.setTitle("Shop Management");
+                                FrontPageStage3.setScene(FrontPageScene3);
+                                FrontPageStage3.show();
+                                ReceiptController.initialize();
                         }
                 }
                 catch(IOException ie){
