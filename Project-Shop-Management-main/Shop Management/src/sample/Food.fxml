@@ -69,5 +69,6 @@
       <TextField fx:id="txt22" layoutX="518.0" layoutY="264.0" onAction="#btnACtion" prefHeight="25.0" prefWidth="49.0" />
       <TextField fx:id="txt23" layoutX="518.0" layoutY="302.0" onAction="#btnACtion" prefHeight="25.0" prefWidth="49.0" />
       <TextField fx:id="txt24" layoutX="518.0" layoutY="345.0" onAction="#btnACtion" prefHeight="25.0" prefWidth="49.0" />
+      <Button fx:id="Finish" layoutX="468.0" layoutY="14.0" mnemonicParsing="false" onAction="#initialize" prefHeight="35.0" prefWidth="101.0" text="Finish" />
    </children>
 </AnchorPane>
