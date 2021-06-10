@@ -55,6 +55,17 @@ public class LoginController {
 	stage.setScene(scene);
 	stage.show();
     }
+    public void loadAllTransaction(ActionEvent event) throws Exception{
+	
+	Database.loadAllTransactionDatabase();
+	//do fxml
+	Parent root = FXMLLoader.load(getClass().getResource("/sample/AllTransactionView.fxml"));
+	Scene scene = new Scene(root);
+	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+	stage.setTitle("Shop Management");
+	stage.setScene(scene);
+	stage.show();
+    }
 
        
 }

@@ -42,10 +42,13 @@ public class AfterReceiptViewController implements Initializable{
     }
     public void goHome(ActionEvent event) throws Exception{
 	Parent root = FXMLLoader.load(getClass().getResource("/sample/Login.fxml"));
-	Scene scene = new Scene(root);
+	//Scene scene = new Scene(root,800,600);
 	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	stage.setTitle("Shop Management");
-	stage.setScene(scene);
+	//stage.setHeight(600);
+	//stage.setWidth(600);
+	//stage.setScene(scene);
+	stage.setScene(new Scene(root,800,600));
 	stage.show();
 
 	Database.closeSession();

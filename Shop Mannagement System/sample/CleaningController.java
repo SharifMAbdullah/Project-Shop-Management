@@ -19,7 +19,6 @@ public class CleaningController extends FrontPageController{
     private Stage stage;
     private Scene scene;
     private Parent root;
-
     public void initialize(ActionEvent event) {
         try {
             if (event.getSource() == home) {
@@ -30,7 +29,7 @@ public class CleaningController extends FrontPageController{
                 stage.setScene(scene);
                 stage.show();
             }
-	    else if (event.getSource() == finish) {
+	    else if (event.getSource() == finish ) {
                 root = FXMLLoader.load(getClass().getResource("/sample/ReceiptView.fxml"));
                 scene = new Scene(root);
                 stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

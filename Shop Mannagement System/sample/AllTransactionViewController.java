@@ -12,12 +12,13 @@ import javafx.scene.Parent;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
 import javafx.event.ActionEvent;
+import java.util.ArrayList;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class ReceiptViewController implements Initializable{
+public class  AllTransactionViewController implements Initializable{
     @FXML
     private ListView<String> myListView;
 
@@ -29,34 +30,38 @@ public class ReceiptViewController implements Initializable{
 
     private double price = 0;
     public void initialize(URL arg0, ResourceBundle arg1){
+	int transaction_serial=0;
 	itemList = FXCollections.observableArrayList();
-	for(int index=0; index<Database.numberOfProducts; index++){
-	    if(Database.list.get(index).amount!=0){
-		itemList.add(Database.generateString(index));
-		price+=(Database.list.get(index).price * Database.list.get(index)
-		    .amount);	    }
+	for(ArrayList<Product>database : Database.allTransactionDatabase){
+	    if(database.size()!=0){
+		    transaction_serial++;
+		    itemList.add("               Transaction Serial No " + transaction_serial);
+		for(Product product: database){
+		    if(product.amount!=0){
+			String temp;
+			temp = product.name + "   " + Integer.toString(product.amount)+ " Kg  (" +  Double.toString(product.price)+"Tk X "+ Integer.toString(product.amount) + ") = " + Double.toString(product.price * product.amount)+ " Tk";
+			itemList.add(temp);
+			price+=(product.price * product.amount);
+		    }
+		}
+	    }
 	}
-    //Database.total=price;
-
 
 	myListView.setItems(itemList);
 	priceLabel.setText("Total Price: "+ Double.toString(price)+" Tk");
     }
-    public void saveTransaction(ActionEvent event) throws Exception{
-	//Database.printDatabase();
-	Database.saveDatabase();
-	Database.closeSession();
-	// DELETE IT LATER
-	//Database.printDatabase();
-	//Database.loadDatabase();
-	//do fxml
+    public void goHome(ActionEvent event) throws Exception{
 	Parent root = FXMLLoader.load(getClass().getResource("/sample/Login.fxml"));
-	Scene scene = new Scene(root,800,600);
+	//Scene scene = new Scene(root,800,600);
 	Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 	stage.setTitle("Shop Management");
 	//stage.setHeight(600);
-	//stage.setWidth(800);
-	stage.setScene(scene);
+	//stage.setWidth(600);
+	//stage.setScene(scene);
+	stage.setScene(new Scene(root,800,600));
 	stage.show();
+
+	Database.closeSession();
     }
+
 }

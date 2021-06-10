@@ -6,7 +6,10 @@ import java.io.*;
 public class Database{
     protected static int numberOfProducts=24;
     protected static ArrayList<Product>list = new ArrayList<Product>(numberOfProducts);
-
+    
+    protected static ArrayList<ArrayList<Product>> allTransactionDatabase = new ArrayList<ArrayList<Product>>();
+    protected static int current_transaction_serial=0;
+    //protected static double total=0;
     protected static void initialize(){
 	//Grocery Products	
 	list.add(new Product("Barley Powder",0,18));
@@ -127,12 +130,17 @@ public class Database{
 	oos.close(); fos.close();
 
 	System.out.println("Database has been saved!----------------------------------------------");
+
+	loadAllTransactionDatabase();
+	updateAndSaveAllTransactionDatabase();
+	closeAllTransactionDatabaseSession();
     }
 
     protected static void closeSession(){
 	//close the database
 	//go to home page
 	Database.list.clear();
+	//closeAllTransactionDatabaseSession();
     }
 
     protected static void loadDatabase() throws IOException, ClassNotFoundException, FileNotFoundException{
@@ -146,8 +154,58 @@ public class Database{
 	//only after database session was closed
 	Database.numberOfProducts = obj.numberOfProducts;
 	Database.list.addAll(obj.list);
-	System.out.println("Database has been loaded--------------------------------------------------------------");
+	System.out.println("Database has been loaded!");
 	//Database.printDatabase();
+	//Database.loadAllTransactionsDatabase();
+	//Database.updateAndSaveAllTransactionDatabase();
     }
+
+    protected static void loadAllTransactionDatabase() throws IOException, ClassNotFoundException, FileNotFoundException{
+	SerializableAllTransactionDatabase obj = null;
+	FileInputStream fis = new FileInputStream("all_database.ser");
+	ObjectInputStream ois = new ObjectInputStream(fis);
+	obj = (SerializableAllTransactionDatabase)ois.readObject();
+	ois.close(); fis.close();
+	
+	Database.closeAllTransactionDatabaseSession();
+	Database.allTransactionDatabase.addAll(obj.allTransactions);
+	Database.current_transaction_serial=obj.currentIndex;
+	System.out.println("All transaction database has been loaded.");
+
+	//Database.printAllTransactionDatabase();
+    }
+    protected static void updateAndSaveAllTransactionDatabase() throws IOException, ClassNotFoundException{
+	Database.allTransactionDatabase.add(Database.list);
+	
+	SerializableAllTransactionDatabase obj = new SerializableAllTransactionDatabase();
+	obj.allTransactions = new ArrayList<ArrayList<Product>>();
+	obj.allTransactions.addAll(Database.allTransactionDatabase);
+	obj.currentIndex=Database.current_transaction_serial++;
+
+	FileOutputStream fos = new FileOutputStream("all_database.ser");
+	ObjectOutputStream oos = new ObjectOutputStream(fos);
+	oos.writeObject(obj);
+
+	oos.close(); fos.close();
+
+	System.out.println("All transaction Database has been updated and saved!");
+	
+	
+    }
+    protected static void closeAllTransactionDatabaseSession(){
+	Database.allTransactionDatabase.clear();
+    }
+
+   protected static void printAllTransactionDatabase(){
+       for(ArrayList<Product>database : allTransactionDatabase){
+	   for(Product product: database){
+	       if(product.amount!=0){
+		   String temp;
+		   temp = product.name + "   " + Integer.toString(product.amount)+ " Kg  (" +  Double.toString(product.price)+"Tk X "+ Integer.toString(product.amount) + ") = " + Double.toString(product.price * product.amount)+ " Tk";
+		   System.out.println(temp);
+	       }
+	   }
+       }
+   }
 }
 
