@@ -7,6 +7,6 @@ This is the first ever project undertaken by me. Other people working in the pro
 @Tasnia16 and @abhijit
 
 ## Features:
--Simple interface
--Producing receipts for purchases
--Keeping track of previous purchases
+- Simple interface
+- Producing receipts for purchases
+- Keeping track of previous purchases
