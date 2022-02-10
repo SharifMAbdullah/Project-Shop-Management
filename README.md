@@ -9,6 +9,7 @@ This is the first ever project undertaken by me as a group project for academic 
   - [Tasnia Hoque Esha](https://github.com/Tasnia16) 
 
 ## Features:
+- Platform independent as Java is used
 - Simple interface
 - Producing receipts for purchases
 - Keeping track of previous purchases
